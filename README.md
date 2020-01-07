@@ -1,4 +1,7 @@
 # GitLab Branch API Wrapper
+Made a wrapper around the [GitLab Branches API](https://docs.gitlab.com/ee/api/branches.html) for cleaning up branches, and committed the wrapper here on GitHub. 
+
+DAS RITE FITE MI
 
 ## List branches to delete
 ```
@@ -16,3 +19,27 @@ Branches that fulfill the following conditions will be listed:
 * **AND** Not in provided whitelist
 
 An output file with name format `branches_to_delete_repo<repo_id>_<timestamp>.csv` will be produced. This file will contain all branches to be deleted according to the criteria above.
+
+## Delete branches
+> Please proceed with caution! Don't delete your master branch!
+
+```
+python3 delete_branches.py <repo_domain_map_filename> <delete_list_filename>
+```
+* `repo_domain_map_filename`: JSON mapping of repo_id to its domain and access token. Should follow this format:
+  ```
+  {
+    "repo_id_1": {
+        "access_token": "some token",
+        "domain": "https://gitlab.com"
+    },
+    "repo_id_2": {
+        "access_token": "some token",
+        "domain": "https://gitlab.com"
+    }
+  }
+  ```
+* `delete_list_filename`: CSV file, where each row represents a branch to delete. Headers should be as such: 
+  ```
+  repo_id,branch_name,author_name
+  ```

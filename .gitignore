@@ -1,9 +1,10 @@
 # MacOS
 *.DS_Store
 
-# Outfiles and Whitelists
-branches_to_delete_*.csv
-whitelist_*.txt
+# In/Out files
+*.csv
+*.json
+*.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
